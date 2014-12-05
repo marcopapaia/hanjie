@@ -19,7 +19,7 @@ struct Cases
 	int [][] grille;
 	int hauteur;
 	int largeur;
-}
+};
 
 struct Niveau
 {
@@ -27,7 +27,7 @@ struct Niveau
 	char *nom;
 	enum TypeNiveau type;
 	enum Difficulte difficulte;
-}
+};
 
 struct Partie
 {
@@ -36,8 +36,19 @@ struct Partie
 	char [50] pseudo;
 	TailleResultats tailleResultats;
 	Niveau niveau;
-}
+	long temp;
+	long date;
+};
 
+struct ElementHistorique
+{
+	long date;	
+	char [50] pseudo;
+	TypeNiveau type;
+	Difficulte difficulte;
+	long temp;
+	Element *suivant;
+}
 
 <>-------<Fichier affichage.c>--------------------------<>
 void affichage (*Cases grille);
@@ -45,11 +56,15 @@ void score (TailleResultats tailleResultats, long temp);
 <>------------------------------------------------------<>
 
 <>--------<Fichier jeu.c>----------------<>
-void hanjie (PartieHanjie *partieHanjie);
-int verificationPartie (PartieHanjie *partieHanjie); //Renvoie 0 si pattern == actuel, sinon 1
+long hanjie (Partie *partie); // Renvoie le score ou -1 si on doit enregister, -2 si on quitte le jeu.
+int verificationPartie (Partie *partie); //Renvoie 0 si pattern == actuel, sinon 1
 <>---------------------------------------<>
 
 <>----------<Fichier fichiers.c>-----------------------------------------<>
-void lecture_db (Niveau [] listeNiveaux); // charge la base de niveaux
+void lecture_db (Niveau [] listeNiveaux, char [3][50] addressesSauvegardes ); // charge la base de niveaux
 Cases lectureNiveau (Niveau niveau); //Charge le niveau
+void sauvegarde (Partie *partie);
+void chargement (Partie *partie);
+void enregistrerHistorique (Partie *partie);
+void lireHistorique (ElementHistorique actuel);
 <>-----------------------------------------------------------------------<>
