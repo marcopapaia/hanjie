@@ -1,0 +1,6 @@
+#ifndef HANJIE_H_INCLUDED
+#define HANJIE_H_INCLUDED
+
+
+
+#endif // FICHIERS_H_INCLUDED
