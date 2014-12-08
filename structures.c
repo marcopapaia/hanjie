@@ -9,7 +9,7 @@ int** initialisationCases(int x, int y)
     int i;
     for(i = 0; i < y; i++)
     {
-        tableau[i] = malloc(y*sizeof(int));
+        tableau[i] = malloc(x*sizeof(int));
     }
 
     return tableau;
