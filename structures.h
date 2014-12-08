@@ -20,10 +20,10 @@ enum TypeNiveau
 {
 	HANJIE
 };
-typedef enum Difficulte Difficulte;
+typedef enum TypeNiveau TypeNiveau;
 struct Cases
 {
-	int grille [5][5];
+	int grille**;
 	int hauteur;
 	int largeur;
 };
@@ -54,7 +54,7 @@ struct ElementHistorique
 	TypeNiveau type;
 	Difficulte difficulte;
 	long temp;
-	ElementHistorique *suivant;
+	struct ElementHistorique *suivant;
 };
 typedef struct ElementHistorique ElementHistorique;
 #endif // STRUCTURES_H_INCLUDED

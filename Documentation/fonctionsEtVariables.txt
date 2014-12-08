@@ -49,6 +49,10 @@ struct ElementHistorique
 	long temp;
 	Element *suivant;
 }
+<>-------<Fichier structures.c>-------------------------<>
+int** initialisationCases(int x, int y=); //Permet d'initaliser une strcture Cases, renvoie le tableau a deux 							dimensions a integrer dans la structure.
+<>------------------------------------------------------<>
+
 
 <>-------<Fichier affichage.c>--------------------------<>
 void affichage (*Cases grille);
