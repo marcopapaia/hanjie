@@ -21,13 +21,6 @@ struct Cases
 	int largeur;
 };
 
-struct Niveau
-{
-	char *addresse;
-	char *nom;
-	enum TypeNiveau type;
-	enum Difficulte difficulte;
-};
 
 struct Partie
 {
@@ -38,6 +31,8 @@ struct Partie
 	Niveau niveau;
 	long temp;
 	long date;
+	enum TypeNiveau type;
+	enum Difficulte difficulte;
 };
 
 struct ElementHistorique

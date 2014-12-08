@@ -13,5 +13,18 @@ void lectureDb (char listeNiveaux [3][3][100], char addressesSauvegardes [3][100
 }
 Cases* lectureNiveau (char addresse [100])
 {
+    FILE * fichier;
+
+    fichier = fopen(addresse, r);
+
+    Cases * niveau = malloc(sizeof(Cases*));
+
+    fscanf("%s%s");
+    fscanf("%d %d", niveau->x, niveau->y);
+
+    printf("%d %d", niveau->x, niveau->y);
+
+
+
 
 }

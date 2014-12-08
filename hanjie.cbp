@@ -31,9 +31,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="affichage.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="affichage.h" />
+		<Unit filename="fichiers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fichiers.h" />
+		<Unit filename="hanjie.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="hanjie.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="structures.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="structures.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
