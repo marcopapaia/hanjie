@@ -11,9 +11,9 @@ enum TailleResultats
 typedef enum TailleResultats TailleResultats;
 enum Difficulte
 {
-	FACILE,
-	NORMAL,
-	DIFFICILE
+	FACILE = 1,
+	NORMAL = 2,
+	DIFFICILE = 3
 };
 typedef enum Difficulte Difficulte;
 enum TypeNiveau
