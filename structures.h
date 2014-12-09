@@ -23,9 +23,9 @@ enum TypeNiveau
 typedef enum TypeNiveau TypeNiveau;
 struct Cases
 {
-	int **grille;
 	int y;
 	int x;
+	char **grille;
 };
 typedef struct Cases Cases;
 
