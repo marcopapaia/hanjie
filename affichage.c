@@ -2,28 +2,31 @@
 
 void affichage (Difficulte diff)
 {
+
     int x,y;
-    int tab [x][y];
-    int i,j;
 
 if (diff == 0)
 {
-    x=5;
-    y=5;
+    x = 5;
+    y = 5;
+
 };
 
 if (diff == 1)
 {
-    x=10;
-    y=10;
+    x = 10;
+    y = 10;
 };
 
 if (diff == 2)
 {
-    x=15;
-    y=15;
+    x = 15;
+    y = 15;
+
 };
 
+    int tab[x][y];
+    int i,j;
 
     for (j = 0; j < x; j++)
     {
