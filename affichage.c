@@ -1,4 +1,4 @@
-#include "includes.h"
+#include "affichage.h"
 
 void affichage (Cases * niveau)
 {
@@ -12,7 +12,7 @@ void affichage (Cases * niveau)
 
     for (i = 0; i < niveau->y; i++)
     {
-        printf("%s", indicesLigne[i]);
+                printf("%s", indicesLigne[i]);
         for(j = 0; j < niveau->x; j++)
         {
 
