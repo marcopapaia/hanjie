@@ -1,4 +1,4 @@
-#include "fonction.h"
+#include "fonctions.h"
 
 
 void SystemPause()
