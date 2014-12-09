@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "structures.h"
 
 void affichage (Difficulte diff)
@@ -48,6 +47,3 @@ if (diff == 2)
 
     }
 }
-=======
-
->>>>>>> gestionFichiers
