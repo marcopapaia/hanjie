@@ -1,4 +1,4 @@
-#include "structures.h"
+#include "includes.h"
 
 int** initialisationCases(int x, int y)
 {

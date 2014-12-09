@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "structures.h"
+#include "includes.h"
 
 void menuHead(char chaine[80])
 {
