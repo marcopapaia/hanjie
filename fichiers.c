@@ -1,13 +1,30 @@
 #include "fichiers.h"
 
-void lectureDb (Niveau listeNiveaux [], char addressesSauvegardes [3][50] )
+void lectureDb (char listeNiveaux [3][3][100], char addressesSauvegardes [3][100] )
+{
+    //Cette fonction charge le fichier contenant la base de donnée et trenvoie les addresses des niveaux et des sauvegardes.
+    FILE * fichier;
+
+    fichier = fopen("db.bin" , "rb");//On ouvre le fichier db.bin en lecture seule en binaire
+
+    fread( listeNiveaux , sizeof(char)*100 , 3*3 , fichier); //On lit dans le fichier le tableau listeNiveau (tableau de char a 3 dimension)
+    fread( addressesSauvegardes , sizeof(char)*100 , 3 , fichier); //On lit dans le fichier le tableau addressesSauvegardes (tableau de char à 2 dimensions)
+
+}
+Cases* lectureNiveau (char addresse [100])
 {
     FILE * fichier;
 
-fichier = fopen("db.dat" , "w");
+    fichier = fopen(addresse, r);
 
-printf("%s", addressesSauvegardes[0]);
-system("pause");
+    Cases * niveau = malloc(sizeof(Cases*));
 
-fprintf(fichier, "%s:%s:%s\n", addressesSauvegardes[0], addressesSauvegardes[1], addressesSauvegardes[2]);
+    fscanf("%s%s");
+    fscanf("%d %d", niveau->x, niveau->y);
+
+    printf("%d %d", niveau->x, niveau->y);
+
+
+
+
 }

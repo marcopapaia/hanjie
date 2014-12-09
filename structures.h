@@ -23,28 +23,22 @@ enum TypeNiveau
 typedef enum TypeNiveau TypeNiveau;
 struct Cases
 {
-	int grille**;
-	int hauteur;
-	int largeur;
+	int **grille;
+	int y;
+	int x;
 };
 typedef struct Cases Cases;
-struct Niveau
-{
-	char *addresse;
-	char *nom;
-	TypeNiveau type;
-	Difficulte difficulte;
-};
-typedef struct Niveau Niveau;
+
 struct Partie
 {
 	Cases pattern; //Solution du niveau
 	Cases actuel; //Tableau remplis par l'utilisateur
 	char pseudo [50];
 	TailleResultats tailleResultats;
-	Niveau niveau;
 	long temp;
 	long date;
+    TypeNiveau type;
+	Difficulte difficulte;
 };
 typedef struct Partie Partie;
 struct ElementHistorique
