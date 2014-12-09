@@ -36,7 +36,8 @@ void lectureNiveau (char addresse [100], Cases * niveau)
             niveau->grille[j][i] = fgetc(fichier);
             test = fgetc(fichier);
         }
-        test = fgetc(fichier);
+        fseek(fichier, -1, SEEK_CUR);
+        lectureSautLigne(fichier);
     }
 
 }

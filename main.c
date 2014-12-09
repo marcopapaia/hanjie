@@ -56,7 +56,7 @@ int main()
                             scanf ("%d",&(partie.tailleResultats));
 
                             //Choix aléatoire du niveau
-                            lectureNiveau("niveaux/facile/hanjie1.pbm", &(partie.pattern));
+                            lectureNiveau("niveaux/facile/1.pbm", &(partie.pattern));
                             partie.actuel.x = partie.pattern.x;
                             partie.actuel.y = partie.pattern.y;
                             partie.actuel.grille = initialisationCases(partie.actuel.x, partie.actuel.y);
