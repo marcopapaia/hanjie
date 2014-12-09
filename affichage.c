@@ -1,38 +1,16 @@
-#include "structures.h"
+#include "affichage.h"
 
-void affichage (Difficulte diff)
+void affichage (Cases * niveau)
 {
 
     int x,y;
-
-if (diff == 0)
-{
-    x = 5;
-    y = 5;
-
-};
-
-if (diff == 1)
-{
-    x = 10;
-    y = 10;
-};
-
-if (diff == 2)
-{
-    x = 15;
-    y = 15;
-
-};
-
-    int tab[x][y];
     int i,j;
 
-    for (j = 0; j < x; j++)
+    for (i = 0; i < niveau->y; i++)
     {
-        for(i = 0; i < y; i++)
+        for(j = 0; j < niveau->x; j++)
         {
-            if (tab[i][j] == 0)
+            if (niveau->grille[i][j] == '0')
             {
                 printf("%c%c%c ", 0xE2, 0x96, 0xA9);
             }
