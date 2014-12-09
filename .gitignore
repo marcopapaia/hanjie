@@ -1,0 +1,8 @@
+*.[oa]
+*~
+bin/
+obj/
+hanjie.depend
+hanjie.layout
+hanjie.cbp
+
