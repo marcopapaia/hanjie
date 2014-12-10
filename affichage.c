@@ -8,7 +8,7 @@ void affichage (Partie * niveau)
 
     system("clear");
     menuHead("Hanjie n°1");
-    char nombreLignes[5][15] = {"1 |","2 |","3 |","4 |","5 |"};
+
 
     for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
@@ -36,7 +36,7 @@ void affichage (Partie * niveau)
     for (i = 0; i < niveau->pattern.y; i++)
     {
 
-        printf("\x1b[36m%s\x1b[0m ",nombreLignes[i]);
+        printf("\x1b[36m%d |\x1b[0m ",i+1);
 
         //test a partir d'ici
         for(k = 0; k < niveau->nbIndiceMaxLigne; k++)
