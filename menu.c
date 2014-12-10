@@ -98,8 +98,6 @@ void menuJeu(Partie * partie)
                 partie->actuel.y = partie->pattern.y;
                 partie->actuel.grille = initialisationGrilleChar(partie->actuel.x, partie->actuel.y);
                 calculIndice(partie);
-                SystemPause();
-
 
                 //Envoie a la fonction de jeu
                 affichage(partie);
