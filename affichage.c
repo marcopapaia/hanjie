@@ -55,7 +55,7 @@ for (i = 0; i < niveau->pattern.x; i++)
             }
             else
             {
-                printf("%d |", niveau->indiceLigne[i][k]);
+                printf("%d ", niveau->indiceLigne[i][k]);
             }
         }
         //fin de test
@@ -63,15 +63,37 @@ for (i = 0; i < niveau->pattern.x; i++)
         {
             if (niveau->pattern.grille[i][j] == '1')
             {
-                printf("%c%c%c   ", 0xE2, 0x96, 0xA9);
+                printf("%c%c%c | ", 0xE2, 0x96, 0xA9);
             }
 
             else
             {
-                printf("%c%c%c   ", 0xE2, 0x96, 0xA1);
+                printf("%c%c%c | ", 0xE2, 0x96, 0xA1);
             }
         }
         printf("\n");
+        if (i != niveau->pattern.y - 1)
+        {
+        printf("           %c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0xBC);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0xBC);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0xBC);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0xBC);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0x80);
+        printf("%c%c%c", 0xE2, 0x94, 0xBC);
+        }
         printf("\n");
     }
 
