@@ -12,7 +12,7 @@ void affichage (Partie * niveau)
 
     for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
-                printf("   ");
+                printf("    ");
 
         for (j = 0; j < niveau->nbIndiceMaxLigne; j++)
         {
@@ -36,7 +36,7 @@ void affichage (Partie * niveau)
     for (i = 0; i < niveau->pattern.y; i++)
     {
 
-        printf("\x1b[36m%d |\x1b[0m ",i+1);
+        printf("\x1b[36m%2d |\x1b[0m ",i+1);
 
         //test a partir d'ici
         for(k = 0; k < niveau->nbIndiceMaxLigne; k++)
