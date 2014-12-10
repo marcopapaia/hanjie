@@ -79,14 +79,17 @@ void menuJeu(Partie * partie)
                 scanf ("%d",&(partie->tailleResultats));
                 system("clear");
 
-                //Choix aléatoire du niveau
-                lectureNiveau("niveaux/facile/1.pbm", &(partie->pattern));
+                //Choix aléatoire du niveau à réaliser
+                lectureNiveau("niveaux/facile/hanjie1.pbm", &(partie->pattern));
                 partie->actuel.x = partie->pattern.x;
                 partie->actuel.y = partie->pattern.y;
-                partie->actuel.grille = initialisationCases(partie->actuel.x, partie->actuel.y);
+                partie->actuel.grille = initialisationGrilleChar(partie->actuel.x, partie->actuel.y);
+                calculIndice(partie);
+                SystemPause();
+
 
                 //Envoie a la fonction de jeu
-                affichage(&(partie->pattern));
+                affichage(partie);
                 SystemPause();
 
                 break;

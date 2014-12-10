@@ -46,7 +46,7 @@ void lectureNiveau (char addresse [100], Cases * niveau)
                 case 1 : //On a lu le numéro magique
 
                     fscanf(fichier, "%d %d", &(niveau->x), &(niveau->y));//On récuppére les dimensions de l'hanjie
-                    niveau->grille=initialisationCases(5,5);//On initialise la grille selon les dimensions récupéré ci-dessus    lectureSautLigne(fichier);
+                    niveau->grille=initialisationGrilleChar(5,5);//On initialise la grille selon les dimensions récupéré ci-dessus    lectureSautLigne(fichier);
                     etat++;//On passe a l'état suivant
                     lectureSautLigne(fichier);//On passe a la ligne suivante
                     break;

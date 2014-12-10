@@ -39,6 +39,10 @@ struct Partie
 	long date;
     TypeNiveau type;
 	Difficulte difficulte;
+	int **indiceColonne;
+	int **indiceLigne;
+	int nbIndiceMaxLigne;
+	int nbIndiceMaxColonne;
 };
 typedef struct Partie Partie;
 struct ElementHistorique

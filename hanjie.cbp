@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="fichiers.h" />
+		<Unit filename="fonctions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fonctions.h" />
 		<Unit filename="hanjie.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,6 +50,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="menu.h" />
 		<Unit filename="structures.c">
 			<Option compilerVar="CC" />
 		</Unit>

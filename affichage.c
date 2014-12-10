@@ -1,22 +1,50 @@
 #include "affichage.h"
 
-void affichage (Cases * niveau)
+void affichage (Partie * niveau)
 {
 
     int x,y;
-    int i,j;
+    int i,j,k;
 
-    char indicesLigne[5][15] = {"\n 4  ","1 2 "," 1  ","2 1 "," 2  "};
-    char indicesColonne[5][25] = {"\n    1 2 1 4 2\n      2 1 "};
-    printf("%s", indicesColonne);
-
-    for (i = 0; i < niveau->y; i++)
+    for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
-                printf("%s", indicesLigne[i]);
-        for(j = 0; j < niveau->x; j++)
+        for (j = 0; j < niveau->nbIndiceMaxLigne; j++)
+        {
+            printf("  ");
+        }
+        for (j = 0; j < niveau->pattern.x; j++)
+        {
+            if(niveau->indiceColonne[j][i] == 0)
+            {
+                printf("  ");
+            }
+            else
+            {
+                printf("%d ", niveau->indiceColonne[j][i]);
+            }
+        }
+        printf("\n");
+    }
+
+    for (i = 0; i < niveau->pattern.y; i++)
+    {
+        //test a partir d'ici
+        for(k = 0; k < niveau->nbIndiceMaxLigne; k++)
+        {
+            if(niveau->indiceLigne[i][k] == 0)
+            {
+                printf("  ");
+            }
+            else
+            {
+                printf("%d ", niveau->indiceLigne[i][k]);
+            }
+        }
+        //fin de test
+        for(j = 0; j < niveau->pattern.x; j++)
         {
 
-            if (niveau->grille[i][j] == '1')
+            if (niveau->pattern.grille[i][j] == '1')
             {
                 printf("%c%c%c ", 0xE2, 0x96, 0xA9);
             }
