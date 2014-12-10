@@ -2,6 +2,8 @@
 #define MENU_H_INCLUDED
 
 #include "structures.h"
+#include "fonctions.h"
+#include "hanjie.h"
 
 void menuHead(char chaine[80]);
 

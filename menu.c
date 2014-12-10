@@ -101,6 +101,7 @@ void menuJeu(Partie * partie)
 
                 //Envoie a la fonction de jeu
                 affichage(partie);
+                hanjie(partie);
                 SystemPause();
 
                 break;
