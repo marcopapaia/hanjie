@@ -12,7 +12,7 @@ void affichage (Partie * niveau)
 
     for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
-                printf("    ");
+                printf("   ");
 
         for (j = 0; j < niveau->nbIndiceMaxLigne; j++)
         {
@@ -23,11 +23,11 @@ void affichage (Partie * niveau)
 
             if(niveau->indiceColonne[j][i] == 0)
             {
-                printf("  ");
+                printf("    ");
             }
             else
             {
-                printf("%d ", niveau->indiceColonne[j][i]);
+                printf(" %d  ", niveau->indiceColonne[j][i]);
             }
         }
         printf("\n");
@@ -56,14 +56,15 @@ void affichage (Partie * niveau)
 
             if (niveau->pattern.grille[i][j] == '1')
             {
-                printf("%c%c%c ", 0xE2, 0x96, 0xA9);
+                printf("%c%c%c   ", 0xE2, 0x96, 0xA9);
             }
 
             else
             {
-                printf("%c%c%c ", 0xE2, 0x96, 0xA1);
+                printf("%c%c%c   ", 0xE2, 0x96, 0xA1);
             }
         }
+        printf("\n");
         printf("\n");
     }
 
