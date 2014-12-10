@@ -7,5 +7,7 @@
 #include "structures.h"
 
 void SystemPause();
+void viderTampon();
+void calculIndice(Partie * partie);
 
 #endif // FICHIERS_H_INCLUDED

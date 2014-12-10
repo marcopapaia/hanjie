@@ -10,6 +10,12 @@ void SystemPause()
    magickey = getc(stdin);
 }
 
+void viderTampon()
+{
+    int a;
+    while ((a = getchar ()) != '\n' && a != EOF);
+}
+
 void calculIndice(Partie * partie)
 {
 
