@@ -9,3 +9,5 @@ void SystemPause()
    scanf("%c", &magickey);
    magickey = getc(stdin);
 }
+
+void calculIndice(Cases * pattern)
