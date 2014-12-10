@@ -6,6 +6,8 @@ void affichage (Partie * niveau)
     int x,y;
     int i,j,k;
 
+    printf("\x1b[32m | |               (_|_)            /  _|        (_)| |      \n | |__   __ _ _ __  _ _  ___        | |_ __ _  ___ _| | ___  \n | '_ \\ / _` | '_ \\| | |/ _ \\       |  _/ _` |/ __| | |/ _ \\ \n | | | | (_| | | | | | |  __/       | || (_| | (__| | |  __/ \n |_| |_|\\__,_|_| |_| |_|\\___|       |_| \\__,_|\\___|_|_|\\___|\n                  _/ |                                       \n                 |__/\x1b[0m");
+
     for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
         for (j = 0; j < niveau->nbIndiceMaxLigne; j++)
@@ -28,6 +30,7 @@ void affichage (Partie * niveau)
 
     for (i = 0; i < niveau->pattern.y; i++)
     {
+
         //test a partir d'ici
         for(k = 0; k < niveau->nbIndiceMaxLigne; k++)
         {
@@ -58,6 +61,8 @@ void affichage (Partie * niveau)
     }
 
 }
+
+int tableauLigne [6][5] = {{0}};
 
 void score()
 {
