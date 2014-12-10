@@ -6,16 +6,21 @@ void affichage (Partie * niveau)
     int x,y;
     int i,j,k;
 
-    printf("\x1b[32m | |               (_|_)            /  _|        (_)| |      \n | |__   __ _ _ __  _ _  ___        | |_ __ _  ___ _| | ___  \n | '_ \\ / _` | '_ \\| | |/ _ \\       |  _/ _` |/ __| | |/ _ \\ \n | | | | (_| | | | | | |  __/       | || (_| | (__| | |  __/ \n |_| |_|\\__,_|_| |_| |_|\\___|       |_| \\__,_|\\___|_|_|\\___|\n                  _/ |                                       \n                 |__/\x1b[0m\n\n");
+    system("clear");
+    menuHead("Hanjie n°1");
+    char nombreLignes[5][15] = {"1 |","2 |","3 |","4 |","5 |"};
 
     for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
+                printf("    ");
+
         for (j = 0; j < niveau->nbIndiceMaxLigne; j++)
         {
-            printf("  ");
+                printf("  ");
         }
-        for (j = 0; j < niveau->pattern.x; j++)
-        {
+            for (j = 0; j < niveau->pattern.x; j++)
+            {
+
             if(niveau->indiceColonne[j][i] == 0)
             {
                 printf("  ");
@@ -30,6 +35,8 @@ void affichage (Partie * niveau)
 
     for (i = 0; i < niveau->pattern.y; i++)
     {
+
+        printf("\x1b[36m%s\x1b[0m ",nombreLignes[i]);
 
         //test a partir d'ici
         for(k = 0; k < niveau->nbIndiceMaxLigne; k++)
@@ -61,8 +68,6 @@ void affichage (Partie * niveau)
     }
 
 }
-
-int tableauLigne [6][5] = {{0}};
 
 void score()
 {
