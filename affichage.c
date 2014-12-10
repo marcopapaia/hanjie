@@ -9,6 +9,15 @@ void affichage (Partie * niveau)
     system("clear");
     menuHead("Hanjie n°1");
 
+    printf("           ");
+for (i = 0; i < niveau->pattern.x; i++)
+{
+
+        printf("\x1b[36m%c\x1b[0m   ",i+65);
+
+}
+
+    printf("\n");
 
     for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
@@ -20,7 +29,6 @@ void affichage (Partie * niveau)
         }
             for (j = 0; j < niveau->pattern.x; j++)
             {
-
             if(niveau->indiceColonne[j][i] == 0)
             {
                 printf("    ");
@@ -47,13 +55,12 @@ void affichage (Partie * niveau)
             }
             else
             {
-                printf("%d ", niveau->indiceLigne[i][k]);
+                printf("%d |", niveau->indiceLigne[i][k]);
             }
         }
         //fin de test
         for(j = 0; j < niveau->pattern.x; j++)
         {
-
             if (niveau->pattern.grille[i][j] == '1')
             {
                 printf("%c%c%c   ", 0xE2, 0x96, 0xA9);
