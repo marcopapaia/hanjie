@@ -50,7 +50,8 @@ void menuPrincipal(Partie * partie)
 
 void menuJeu(Partie * partie)
 {
-    int b;
+    int b, i, j;
+    char addresse[150];
     do
     {
 
@@ -93,7 +94,7 @@ void menuJeu(Partie * partie)
 
                 //Choix aléatoire du niveau à réaliser
                 partie->date = time(NULL);
-                lectureNiveau("niveaux/facile/hanjie2.pbm", &(partie->pattern));
+                lectureNiveau("niveaux/facile/1.pbm", &(partie->pattern));
                 partie->actuel.x = partie->pattern.x;
                 partie->actuel.y = partie->pattern.y;
                 partie->actuel.grille = initialisationGrilleChar(partie->actuel.x, partie->actuel.y);
@@ -102,15 +103,25 @@ void menuJeu(Partie * partie)
 
                 //Envoie a la fonction de jeu
                 system("clear");
-                affichage(partie);
                 hanjie(partie);
-                SystemPause();
-                sauvegarde(partie);
 
+                system("clear");
+                menuHead("Sauvegarde");
+                printf("Addresse de la save :\n");
+                scanf(" %s", addresse);
+                sauvegarde(partie, addresse);
                 break;
 
             case 2 :
                 system("clear");
+                //-----En travaux
+                viderTampon();
+                menuHead("Chargement partie");
+                printf("Addresse de la save :\n");
+                scanf(" %s", addresse);
+                chargement(partie, addresse);
+
+                hanjie(partie);
             //sauvegarde();
                 break;
 

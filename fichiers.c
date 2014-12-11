@@ -247,16 +247,16 @@ void chargement(Partie * partie, char addresse[150])
                 j = 0;
             }
 
-            if(!strcmp(chaine, "1") || !strcmp(chaine, "0"))
+            if(chaine[0] >= '0' && chaine[0] <= '9')
             {
+                lu = chaine[0];
                 switch (grilleLu)
                 {
                     case 1:
                         for(i = 0; i < partie->pattern.x; i++)
                         {
-                            printf("-%d-%d-\n", j, i);
                             partie->pattern.grille[j][i] = lu;
-                            lu = fgetc(fichier);
+                            while ((lu = fgetc(fichier)) == 32);
                             if(j+1 == partie->pattern.y && i+1 == partie->pattern.x)
                             {
                                 grilleLu = 0;
@@ -266,9 +266,8 @@ void chargement(Partie * partie, char addresse[150])
                     case 2:
                         for(i = 0; i < partie->actuel.x; i++)
                         {
-                            printf("-%d-%d-\n", j, i);
                             partie->actuel.grille[j][i] = lu;
-                            lu = fgetc(fichier);
+                            while ((lu = fgetc(fichier)) == 32);
                             if(j+1 == partie->actuel.y && i+1 == partie->actuel.x)
                             {
                                 grilleLu = 0;
@@ -278,10 +277,9 @@ void chargement(Partie * partie, char addresse[150])
                     case 3:
                         for(i = 0; i < partie->nbIndiceMaxLigne; i++)
                         {
-                            printf("-%d-%d-\n", j, i);
-                            partie->indiceLigne[j][i] = lu;
-                            lu = fgetc(fichier);
-                            if(j+1 == partie->pattern.y && i+1 == partie->nbIndiceMaxLigne)
+                            partie->indiceLigne[j][i] = lu - '0';
+                            while ((lu = fgetc(fichier)) == 32);
+                            if((j+1) == partie->pattern.y && (i+1) == partie->nbIndiceMaxLigne)
                             {
                                 grilleLu = 0;
                             }
@@ -290,9 +288,8 @@ void chargement(Partie * partie, char addresse[150])
                     case 4:
                         for(i = 0; i < partie->nbIndiceMaxColonne; i++)
                         {
-                            printf("-%d-%d-\n", j, i);
-                            partie->indiceColonne[j][i] = lu;
-                            lu = fgetc(fichier);
+                            partie->indiceColonne[j][i] = lu - '0';
+                            while ((lu = fgetc(fichier)) == 32);
                             if(j+1 == partie->pattern.x && i+1 == partie->nbIndiceMaxColonne)
                             {
                                 grilleLu = 0;
