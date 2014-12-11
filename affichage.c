@@ -9,30 +9,30 @@ void affichage (Partie * niveau)
     menuHead("Hanjie n°1");
 
     for(j = 0; j < niveau->nbIndiceMaxLigne; j++)
-        {
-            printf("  ");
-        }
-        printf("     ");
+    {
+        printf("  ");
+    }
+    printf("     ");
 
-for (i = 0; i < niveau->actuel.x; i++)
-{
+    for (i = 0; i < niveau->actuel.x; i++)
+    {
 
         printf("\x1b[36m%c\x1b[0m   ",i+65);
 
-}
+    }
 
     printf("\n");
 
     for (i = 0; i < niveau->nbIndiceMaxColonne; i++)
     {
-                printf("    ");
+        printf("    ");
 
         for (j = 0; j < niveau->nbIndiceMaxLigne; j++)
         {
-                printf("  ");
+            printf("  ");
         }
-            for (j = 0; j < niveau->actuel.x; j++)
-            {
+        for (j = 0; j < niveau->actuel.x; j++)
+        {
             if(niveau->indiceColonne[j][i] == 0)
             {
                 printf("    ");

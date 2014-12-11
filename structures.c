@@ -8,7 +8,7 @@ int** initialisationGrilleInt(int x, int y)
 
     int i,j;
     for(i = 0; i < y; i++)
-    {                                      //Pour chaque pointeur du tableau que l'on vient de crée
+    {   //Pour chaque pointeur du tableau que l'on vient de crée
         tableau[i] = malloc(x*sizeof(int));//On alloue un tableau d'entier
         for(j = 0; j < x; j++)
         {
@@ -26,7 +26,7 @@ char** initialisationGrilleChar(int x, int y)
 
     int i, j;
     for(i = 0; i < y; i++)
-    {                                      //Pour chaque pointeur du tableau que l'on vient de crée
+    {   //Pour chaque pointeur du tableau que l'on vient de crée
         tableau[i] = malloc(x*sizeof(char));//On alloue un tableau d'entier
         for(j = 0; j < x; j++)
         {

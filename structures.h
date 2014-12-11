@@ -5,56 +5,56 @@
 #include <time.h>
 enum TailleResultats
 {
-	_5x3,
-	_7x4,
-	_9x5,
-	_11x6
+    _5x3,
+    _7x4,
+    _9x5,
+    _11x6
 };
 typedef enum TailleResultats TailleResultats;
 enum Difficulte
 {
-	FACILE = 1,
-	NORMAL = 2,
-	DIFFICILE = 3
+    FACILE = 1,
+    NORMAL = 2,
+    DIFFICILE = 3
 };
 typedef enum Difficulte Difficulte;
 enum TypeNiveau
 {
-	HANJIE
+    HANJIE
 };
 typedef enum TypeNiveau TypeNiveau;
 struct Cases
 {
-	int y;
-	int x;
-	char **grille;
+    int y;
+    int x;
+    char **grille;
 };
 typedef struct Cases Cases;
 
 struct Partie
 {
-	Cases pattern; //Solution du niveau
-	Cases actuel; //Tableau remplis par l'utilisateur
-	char pseudo [50];
-	TailleResultats tailleResultats;
-	time_t temp;
-	double date;
+    Cases pattern; //Solution du niveau
+    Cases actuel; //Tableau remplis par l'utilisateur
+    char pseudo [50];
+    TailleResultats tailleResultats;
+    time_t temp;
+    double date;
     TypeNiveau type;
-	Difficulte difficulte;
-	int **indiceColonne;
-	int **indiceLigne;
-	int nbIndiceMaxLigne;
-	int nbIndiceMaxColonne;
+    Difficulte difficulte;
+    int **indiceColonne;
+    int **indiceLigne;
+    int nbIndiceMaxLigne;
+    int nbIndiceMaxColonne;
 };
 typedef struct Partie Partie;
 struct ElementHistorique
 {
-	long date;
-	char pseudo [50];
-	TypeNiveau type;
-	Difficulte difficulte;
-	long temp;
-	struct ElementHistorique *suivant;
+    long date;
+    char pseudo [50];
+    TypeNiveau type;
+    Difficulte difficulte;
+    long temp;
+    struct ElementHistorique *suivant;
 };
 typedef struct ElementHistorique ElementHistorique;
 #endif // STRUCTURES_H_INCLUDED

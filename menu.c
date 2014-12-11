@@ -27,25 +27,25 @@ void menuPrincipal(Partie * partie)
 
         switch (a)
         {
-            case 1 :
+        case 1 :
 
-                menuJeu(partie);
+            menuJeu(partie);
 
-                break;
+            break;
 
-                case 2 :
-                    system("clear");
-                    break;
+        case 2 :
+            system("clear");
+            break;
 
-                case 3 :
-                    system("clear");
-                    break;
-                default :
-                    system("clear");
-                    break;
+        case 3 :
+            system("clear");
+            break;
+        default :
+            system("clear");
+            break;
         }
 
-    }while (a != 3);
+    } while (a != 3);
 }
 
 void menuJeu(Partie * partie)
@@ -63,75 +63,75 @@ void menuJeu(Partie * partie)
         switch (b)
         {
 
-            case 1 :
+        case 1 :
+            system("clear");
+            viderTampon();
+            menuHead("Nouvelle Partie");
+            printf("Entrez votre pseudo (50 charactéres maximum):\n ");
+            scanf("%[^\n]50s", partie->pseudo);
+            viderTampon();
+            do
+            {
+
                 system("clear");
-                viderTampon();
                 menuHead("Nouvelle Partie");
-                printf("Entrez votre pseudo (50 charactéres maximum):\n ");
-                scanf("%[^\n]50s", partie->pseudo);
-                viderTampon();
-                do
-                {
+                printf("Quelle difficulté du niveau voulez vous ?\n\t1=FACILE\n\t2=MOYEN\n\t3=DIFFICILE\n");
+                scanf ("%d",&(partie->difficulte));
 
-                    system("clear");
-                    menuHead("Nouvelle Partie");
-                    printf("Quelle difficulté du niveau voulez vous ?\n\t1=FACILE\n\t2=MOYEN\n\t3=DIFFICILE\n");
-                    scanf ("%d",&(partie->difficulte));
-
-                }while (partie->difficulte != 1 && partie->difficulte != 2 && partie->difficulte != 3);
-                viderTampon();
-                do
-                {
-
-                    system("clear");
-                    menuHead("Nouvelle Partie");
-                    printf("Quelle taille de d'affichage des resultats voulez vous ? \n\t1=5*3\n\t2=7*4\n\t3=9*5\n\t4=11*6\n ");
-                    scanf ("%1d",&(partie->tailleResultats));
-
-                }while (partie->tailleResultats != 1 && partie->tailleResultats != 2 && partie->tailleResultats != 3 && partie->tailleResultats != 4);
+            } while (partie->difficulte != 1 && partie->difficulte != 2 && partie->difficulte != 3);
+            viderTampon();
+            do
+            {
 
                 system("clear");
+                menuHead("Nouvelle Partie");
+                printf("Quelle taille de d'affichage des resultats voulez vous ? \n\t1=5*3\n\t2=7*4\n\t3=9*5\n\t4=11*6\n ");
+                scanf ("%1d",&(partie->tailleResultats));
 
-                //Choix aléatoire du niveau à réaliser
-                partie->date = time(NULL);
-                lectureNiveau("niveaux/facile/1.pbm", &(partie->pattern));
-                partie->actuel.x = partie->pattern.x;
-                partie->actuel.y = partie->pattern.y;
-                partie->actuel.grille = initialisationGrilleChar(partie->actuel.x, partie->actuel.y);
-                calculIndice(partie);
+            } while (partie->tailleResultats != 1 && partie->tailleResultats != 2 && partie->tailleResultats != 3 && partie->tailleResultats != 4);
+
+            system("clear");
+
+            //Choix aléatoire du niveau à réaliser
+            partie->date = time(NULL);
+            lectureNiveau("niveaux/facile/1.pbm", &(partie->pattern));
+            partie->actuel.x = partie->pattern.x;
+            partie->actuel.y = partie->pattern.y;
+            partie->actuel.grille = initialisationGrilleChar(partie->actuel.x, partie->actuel.y);
+            calculIndice(partie);
 
 
-                //Envoie a la fonction de jeu
-                system("clear");
-                hanjie(partie);
+            //Envoie a la fonction de jeu
+            system("clear");
+            hanjie(partie);
 
-                system("clear");
-                menuHead("Sauvegarde");
-                printf("Addresse de la save :\n");
-                scanf(" %s", addresse);
-                sauvegarde(partie, addresse);
-                break;
+            system("clear");
+            menuHead("Sauvegarde");
+            printf("Addresse de la save :\n");
+            scanf(" %s", addresse);
+            sauvegarde(partie, addresse);
+            break;
 
-            case 2 :
-                system("clear");
-                //-----En travaux
-                viderTampon();
-                menuHead("Chargement partie");
-                printf("Addresse de la save :\n");
-                scanf(" %s", addresse);
-                chargement(partie, addresse);
+        case 2 :
+            system("clear");
+            //-----En travaux
+            viderTampon();
+            menuHead("Chargement partie");
+            printf("Addresse de la save :\n");
+            scanf(" %s", addresse);
+            chargement(partie, addresse);
 
-                hanjie(partie);
+            hanjie(partie);
             //sauvegarde();
-                break;
+            break;
 
-            case 3:
-                system("clear");
-                break;
-            default :
-                break;
+        case 3:
+            system("clear");
+            break;
+        default :
+            break;
         }
 
-    }while (b != 3);
+    } while (b != 3);
 
 }
