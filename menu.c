@@ -15,9 +15,7 @@ void menuHead(char chaine[80])
 
 void menuPrincipal(Partie * partie)
 {
-    int a,c;
-    int numDiff,TailleResultats;
-    char pseudo[50];
+    int a;
 
     do
     {
@@ -66,9 +64,10 @@ void menuJeu(Partie * partie)
 
             case 1 :
                 system("clear");
+                viderTampon();
                 menuHead("Nouvelle Partie");
                 printf("Entrez votre pseudo (50 charactéres maximum):\n ");
-                scanf("%50s", partie->pseudo);
+                scanf("%[^\n]50s", partie->pseudo);
                 viderTampon();
                 do
                 {
@@ -93,16 +92,18 @@ void menuJeu(Partie * partie)
                 system("clear");
 
                 //Choix aléatoire du niveau à réaliser
+                partie->date = time(NULL);
                 lectureNiveau("niveaux/facile/hanjie1.pbm", &(partie->pattern));
                 partie->actuel.x = partie->pattern.x;
                 partie->actuel.y = partie->pattern.y;
                 partie->actuel.grille = initialisationGrilleChar(partie->actuel.x, partie->actuel.y);
                 calculIndice(partie);
 
+
                 //Envoie a la fonction de jeu
-                affichage(partie);
                 hanjie(partie);
                 SystemPause();
+                sauvegarde(partie);
 
                 break;
 

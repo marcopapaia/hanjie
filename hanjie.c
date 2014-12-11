@@ -2,7 +2,7 @@
 
 void hanjie (Partie *partie )
 {
-int posLig,posCol,p,i,j;
+int posLig,posCol;
 do{
 
 if (partie->pattern.grille[posCol][posLig]=='0'){

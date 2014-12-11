@@ -1,6 +1,8 @@
 #ifndef STRUCTURES_H_INCLUDED
 #define STRUCTURES_H_INCLUDED
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 enum TailleResultats
 {
 	_5x3,
@@ -35,8 +37,8 @@ struct Partie
 	Cases actuel; //Tableau remplis par l'utilisateur
 	char pseudo [50];
 	TailleResultats tailleResultats;
-	long temp;
-	long date;
+	time_t temp;
+	double date;
     TypeNiveau type;
 	Difficulte difficulte;
 	int **indiceColonne;

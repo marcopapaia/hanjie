@@ -1,5 +1,5 @@
 #include "fonctions.h"
-
+#include <time.h>
 
 void SystemPause()
 {

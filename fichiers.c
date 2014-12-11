@@ -1,5 +1,6 @@
 #include "fichiers.h"
 
+
 void lectureDb (char listeNiveaux [3][3][100], char addressesSauvegardes [3][100] )
 {
     //Cette fonction charge le fichier contenant la base de donnée et trenvoie les addresses des niveaux et des sauvegardes.
@@ -91,4 +92,73 @@ void lectureSautLigne( FILE * fichier)
     {
         test = fgetc(fichier);
     }//Le curseur du FILE est donc juste avant le premier caractére de la ligne suivante
+}
+
+void sauvegarde(Partie * partie)
+{
+        FILE * fichier;//On crée un FILE
+
+    char format[50];
+    time_t temps;
+    struct tm date;
+    // On récupère la date et l'heure actuelles.
+    time(&temps);
+    date=*localtime(&temps);
+    strftime(format, 50, "%d/%m/%y à %X", &date);
+
+    fichier = fopen("test.bin", "w");
+    fprintf(fichier, "# Fichier de sauvegarde du jeu exia.hanjie, générée le %s\n", format);
+    fprintf(fichier, "# Toute modification peut mener à la corruption de la sauvegarde\n");
+    fprintf(fichier, "#--------------------------------------------------------------------\n\n");
+
+    fprintf(fichier, "t_debut : %f\n",  partie->date);//Date de début
+    fprintf(fichier, "t_save : %f\n",  (double) temps);//Date de sauvegarde
+    fprintf(fichier, "pseudo : %s\n",  partie->pseudo);//pseudo
+    fprintf(fichier, "type : %d\n",  partie->type);//Type de niveau
+    fprintf(fichier, "taille_score : %d\n",  partie->tailleResultats);//Taille des resultats
+    fprintf(fichier, "difficultee : %d\n",  partie->difficulte);//Difficulté
+    fprintf(fichier, "nbMaxIndiceColonne : %d\n",  partie->nbIndiceMaxColonne);
+    fprintf(fichier, "nbMaxIndiceLigne : %d\n\n",  partie->nbIndiceMaxLigne);
+
+    sauvegardeGrilleChar(fichier, partie->pattern.grille, partie->pattern.x, partie->pattern.y, "grille_pattern");
+
+    sauvegardeGrilleChar(fichier, partie->actuel.grille, partie->actuel.x, partie->actuel.y, "grille_actuel");
+
+    sauvegardeGrilleInt(fichier, partie->indiceLigne, partie->nbIndiceMaxLigne, partie->pattern.y, "indices_lignes");
+
+    sauvegardeGrilleInt(fichier, partie->indiceColonne, partie->nbIndiceMaxColonne, partie->pattern.x, "indices_colonnes");
+
+    fprintf(fichier, "# Fin du fichier");
+}
+void sauvegardeGrilleInt(FILE * fichier, int **grille, int x, int y, char nom[50])
+{
+    fprintf(fichier, "#---------------\n\n");
+    fprintf(fichier, "%s\n", nom);
+    fprintf(fichier, "%d %d\n", y, x);
+    int i, j;
+    for (i = 0; i < y; i++)
+    {
+        for (j = 0; j < x; j++)
+        {
+            fprintf(fichier, "%d ", grille[i][j]);
+        }
+        fprintf(fichier, "\n");
+    }
+    fprintf(fichier, "#---------------\n\n");
+}
+void sauvegardeGrilleChar(FILE * fichier, char **grille, int x, int y, char nom[50])
+{
+    fprintf(fichier, "#---------------\n\n");
+    fprintf(fichier, "%s\n", nom);
+    fprintf(fichier, "%d %d\n", y, x);
+    int i, j;
+    for (i = 0; i < y; i++)
+    {
+        for (j = 0; j < x; j++)
+        {
+            fprintf(fichier, "%c ", grille[i][j]);
+        }
+        fprintf(fichier, "\n");
+    }
+    fprintf(fichier, "#---------------\n\n");
 }

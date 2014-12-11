@@ -3,7 +3,6 @@
 void affichage (Partie * niveau)
 {
 
-    int x,y;
     int i,j,k;
 
     system("clear");
