@@ -71,27 +71,19 @@ for (i = 0; i < niveau->pattern.x; i++)
             }
         }
         printf("\n");
-        if (i != niveau->pattern.y - 1)
+        for(j = 0; j < niveau->nbIndiceMaxLigne; j++)
         {
-        printf("           %c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0xBC);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0xBC);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0xBC);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0xBC);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0x80);
-        printf("%c%c%c", 0xE2, 0x94, 0xBC);
+            printf("  ");
+        }
+
+        printf("    ");
+
+        for(j = 0; j < niveau->pattern.x; j++)
+        {
+            printf("%c%c%c", 0xE2, 0x94, 0x80);
+            printf("%c%c%c", 0xE2, 0x94, 0x80);
+            printf("%c%c%c", 0xE2, 0x94, 0x80);
+            printf("%c%c%c", 0xE2, 0x94, 0xBC);
         }
         printf("\n");
     }
