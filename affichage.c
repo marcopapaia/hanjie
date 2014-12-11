@@ -8,7 +8,12 @@ void affichage (Partie * niveau)
     system("clear");
     menuHead("Hanjie n°1");
 
-    printf("           ");
+    for(j = 0; j < niveau->nbIndiceMaxLigne; j++)
+        {
+            printf("  ");
+        }
+        printf("     ");
+
 for (i = 0; i < niveau->actuel.x; i++)
 {
 
