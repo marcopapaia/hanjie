@@ -93,7 +93,7 @@ void menuJeu(Partie * partie)
 
                 //Choix aléatoire du niveau à réaliser
                 partie->date = time(NULL);
-                lectureNiveau("niveaux/facile/hanjie1.pbm", &(partie->pattern));
+                lectureNiveau("niveaux/facile/hanjie2.pbm", &(partie->pattern));
                 partie->actuel.x = partie->pattern.x;
                 partie->actuel.y = partie->pattern.y;
                 partie->actuel.grille = initialisationGrilleChar(partie->actuel.x, partie->actuel.y);
@@ -101,6 +101,8 @@ void menuJeu(Partie * partie)
 
 
                 //Envoie a la fonction de jeu
+                system("clear");
+                affichage(partie);
                 hanjie(partie);
                 SystemPause();
                 sauvegarde(partie);
