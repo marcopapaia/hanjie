@@ -4,11 +4,15 @@ void hanjie (Partie *partie )
 {
 int posLig,posCol;
 do{
+    system("clear");
+    affichage(partie);
+
+    printf("Quelle case voulez vous selectionner ? ");
+    scanf ("%d%d",&posCol ,&posLig);
 
 if (partie->pattern.grille[posCol][posLig]=='0'){
     partie->pattern.grille[posCol][posLig]='1';
-    system("clear");
-    affichage(partie);
+
 
 
 }
@@ -20,8 +24,7 @@ else{
 
 }
 
-printf("Quelle case voulez vous selectionner ? ");
-scanf ("%d%d",&posCol ,&posLig);
+
 }
 while (posCol<10);
     }
