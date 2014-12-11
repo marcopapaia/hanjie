@@ -88,13 +88,14 @@ void lectureSautLigne( FILE * fichier)
 {
     //On lit le fichier caractére par caractére jusque trouver le caractére de retour a la ligne
     char test = 0;
-    while(test != '\n')
+    while(test != '\n' && test != EOF)
     {
         test = fgetc(fichier);
     }//Le curseur du FILE est donc juste avant le premier caractére de la ligne suivante
+    if (test == EOF) fseek(fichier, 1, SEEK_CUR); //Si on a atteint la fin du fichier, a reviens de 1 en arriére pour permettre la detectiond e EOF
 }
 
-void sauvegarde(Partie * partie)
+void sauvegarde(Partie * partie, char addresse[150])
 {
         FILE * fichier;//On crée un FILE
 
@@ -109,16 +110,14 @@ void sauvegarde(Partie * partie)
     fichier = fopen("test.bin", "w");
     fprintf(fichier, "# Fichier de sauvegarde du jeu exia.hanjie, générée le %s\n", format);
     fprintf(fichier, "# Toute modification peut mener à la corruption de la sauvegarde\n");
-    fprintf(fichier, "#--------------------------------------------------------------------\n\n");
+    fprintf(fichier, "#--------------------------------------------------------------------\n");
 
-    fprintf(fichier, "t_debut : %f\n",  partie->date);//Date de début
-    fprintf(fichier, "t_save : %f\n",  (double) temps);//Date de sauvegarde
-    fprintf(fichier, "pseudo : %s\n",  partie->pseudo);//pseudo
-    fprintf(fichier, "type : %d\n",  partie->type);//Type de niveau
-    fprintf(fichier, "taille_score : %d\n",  partie->tailleResultats);//Taille des resultats
-    fprintf(fichier, "difficultee : %d\n",  partie->difficulte);//Difficulté
-    fprintf(fichier, "nbMaxIndiceColonne : %d\n",  partie->nbIndiceMaxColonne);
-    fprintf(fichier, "nbMaxIndiceLigne : %d\n\n",  partie->nbIndiceMaxLigne);
+    fprintf(fichier, "t_debut: %f\n",  partie->date);//Date de début
+    fprintf(fichier, "t_save: %f\n",  (double) temps);//Date de sauvegarde
+    fprintf(fichier, "pseudo: %s\n",  partie->pseudo);//pseudo
+    fprintf(fichier, "type: %d\n",  partie->type);//Type de niveau
+    fprintf(fichier, "taille_score: %d\n",  partie->tailleResultats);//Taille des resultats
+    fprintf(fichier, "difficultee: %d\n",  partie->difficulte);//Difficulté
 
     sauvegardeGrilleChar(fichier, partie->pattern.grille, partie->pattern.x, partie->pattern.y, "grille_pattern");
 
@@ -132,9 +131,9 @@ void sauvegarde(Partie * partie)
 }
 void sauvegardeGrilleInt(FILE * fichier, int **grille, int x, int y, char nom[50])
 {
-    fprintf(fichier, "#---------------\n\n");
-    fprintf(fichier, "%s\n", nom);
-    fprintf(fichier, "%d %d\n", y, x);
+    fprintf(fichier, "#---------------\n");
+    fprintf(fichier, "%s:", nom);
+    fprintf(fichier, " %d %d\n", y, x);
     int i, j;
     for (i = 0; i < y; i++)
     {
@@ -148,9 +147,9 @@ void sauvegardeGrilleInt(FILE * fichier, int **grille, int x, int y, char nom[50
 }
 void sauvegardeGrilleChar(FILE * fichier, char **grille, int x, int y, char nom[50])
 {
-    fprintf(fichier, "#---------------\n\n");
-    fprintf(fichier, "%s\n", nom);
-    fprintf(fichier, "%d %d\n", y, x);
+    fprintf(fichier, "#---------------\n");
+    fprintf(fichier, "%s:", nom);
+    fprintf(fichier, " %d %d\n", y, x);
     int i, j;
     for (i = 0; i < y; i++)
     {
@@ -161,4 +160,157 @@ void sauvegardeGrilleChar(FILE * fichier, char **grille, int x, int y, char nom[
         fprintf(fichier, "\n");
     }
     fprintf(fichier, "#---------------\n\n");
+}
+void chargement(Partie * partie, char addresse[150])
+{
+  FILE * fichier;
+  fichier = fopen ("test.bin","r");
+
+  char lu = 0;
+  char chaine [51];
+  int i,j, grilleLu = 0;
+
+  if (fichier==NULL) perror ("Erreur a l'ourverture du fichier");
+  else
+  {
+    while (fgetc(fichier) != EOF)
+    {
+        fseek(fichier, -1, SEEK_CUR);
+
+
+        if (lu != '#')
+        {
+            fseek(fichier, -1, SEEK_CUR);
+
+            fscanf(fichier, "%50s", chaine);
+
+            if(!strcmp(chaine, "t_debut:"))
+            {
+                fscanf(fichier, " %lf", &(partie->date));
+                printf("%f\n", partie->date);
+            }
+            if(!strcmp(chaine, "t_save:"))
+            {
+                fscanf(fichier, " %lf", &(partie->temp));
+                printf("%f\n", partie->temp);
+            }
+            if(!strcmp(chaine, "pseudo:"))
+            {
+                fscanf(fichier, " %s", &(partie->pseudo));
+                printf("%s\n", partie->pseudo);
+            }
+            if(!strcmp(chaine, "type:"))
+            {
+                fscanf(fichier, " %d", &(partie->type));
+                printf("%d\n", partie->type);
+            }
+            if(!strcmp(chaine, "taille_score:"))
+            {
+                fscanf(fichier, " %d", &(partie->tailleResultats));
+                printf("%d\n", partie->tailleResultats);
+            }
+            if(!strcmp(chaine, "difficultee:"))
+            {
+                fscanf(fichier, " %d", &(partie->difficulte));
+                printf("%d\n", partie->difficulte);
+            }
+            if(!strcmp(chaine, "grille_pattern:"))
+            {
+                fscanf(fichier, " %d %d", &(partie->pattern.y), &(partie->pattern.x));
+                printf("%d %d\n", partie->pattern.y, partie->pattern.x);
+                partie->pattern.grille=initialisationGrilleChar(partie->pattern.x,partie->pattern.y);
+                grilleLu = 1;
+                j = 0;
+            }
+            if(!strcmp(chaine, "grille_actuel:"))
+            {
+                fscanf(fichier, " %d %d", &(partie->actuel.y), &(partie->actuel.x));
+                printf("%d %d\n", partie->actuel.y, partie->actuel.x);
+                partie->actuel.grille=initialisationGrilleChar(partie->actuel.x,partie->actuel.y);
+                grilleLu = 2;
+                j = 0;
+            }
+            if(!strcmp(chaine, "indices_lignes:"))
+            {
+                fscanf(fichier, " %*d %d", &(partie->nbIndiceMaxLigne));
+                printf("%d\n", partie->nbIndiceMaxLigne);
+                partie->indiceLigne=initialisationGrilleInt(partie->nbIndiceMaxLigne,partie->pattern.y);
+                grilleLu = 3;
+                j = 0;
+            }
+            if(!strcmp(chaine, "indices_colonnes:"))
+            {
+                fscanf(fichier, " %*d %d", &(partie->nbIndiceMaxColonne));
+                printf("%d\n", partie->nbIndiceMaxColonne);
+                partie->indiceColonne=initialisationGrilleInt(partie->nbIndiceMaxColonne,partie->pattern.x);
+                grilleLu = 4;
+                j = 0;
+            }
+
+            if(!strcmp(chaine, "1") || !strcmp(chaine, "0"))
+            {
+                switch (grilleLu)
+                {
+                    case 1:
+                        for(i = 0; i < partie->pattern.x; i++)
+                        {
+                            printf("-%d-%d-\n", j, i);
+                            partie->pattern.grille[j][i] = lu;
+                            lu = fgetc(fichier);
+                            if(j+1 == partie->pattern.y && i+1 == partie->pattern.x)
+                            {
+                                grilleLu = 0;
+                            }
+                        }
+                    break;
+                    case 2:
+                        for(i = 0; i < partie->actuel.x; i++)
+                        {
+                            printf("-%d-%d-\n", j, i);
+                            partie->actuel.grille[j][i] = lu;
+                            lu = fgetc(fichier);
+                            if(j+1 == partie->actuel.y && i+1 == partie->actuel.x)
+                            {
+                                grilleLu = 0;
+                            }
+                        }
+                    break;
+                    case 3:
+                        for(i = 0; i < partie->nbIndiceMaxLigne; i++)
+                        {
+                            printf("-%d-%d-\n", j, i);
+                            partie->indiceLigne[j][i] = lu;
+                            lu = fgetc(fichier);
+                            if(j+1 == partie->pattern.y && i+1 == partie->nbIndiceMaxLigne)
+                            {
+                                grilleLu = 0;
+                            }
+                        }
+                    break;
+                    case 4:
+                        for(i = 0; i < partie->nbIndiceMaxColonne; i++)
+                        {
+                            printf("-%d-%d-\n", j, i);
+                            partie->indiceColonne[j][i] = lu;
+                            lu = fgetc(fichier);
+                            if(j+1 == partie->pattern.x && i+1 == partie->nbIndiceMaxColonne)
+                            {
+                                grilleLu = 0;
+                            }
+                        }
+                    break;
+
+                }
+                j++;
+                fseek(fichier, -1, SEEK_CUR);
+            }
+
+        }
+
+        lectureSautLigne(fichier);
+    }
+
+    fclose (fichier);
+  }
+
 }
